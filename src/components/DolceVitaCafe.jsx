@@ -450,17 +450,40 @@ export default function DolceVitaCafe() {
 
                 <p className="mt-4 text-sm text-white/80">{t("sections.visitSub")}</p>
 
-                <div className="mt-5 space-y-2 text-sm text-white/85">
-                  <div className="flex items-center gap-2">
-                    <FiMapPin /> {t("visit.address")}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FiClock /> {t("visit.hours")}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FiPhone /> {t("visit.phone")}
-                  </div>
-                </div>
+                <div className="mt-5 space-y-4 text-sm text-white/85">
+  {/* Location 1 */}
+  <div>
+    <div className="flex items-center gap-2 font-semibold">
+      <FiMapPin /> {t("visit.location1.title")}
+    </div>
+    <div className="ml-6 mt-1 space-y-1 text-white/80">
+      <div>{t("visit.location1.address")}</div>
+      <div className="flex items-center gap-2">
+        <FiClock /> {t("visit.hours")}
+      </div>
+      <div className="flex items-center gap-2">
+        <FiPhone /> {t("visit.location1.phone")}
+      </div>
+    </div>
+  </div>
+
+  {/* Location 2 */}
+  <div>
+    <div className="flex items-center gap-2 font-semibold">
+      <FiMapPin /> {t("visit.location2.title")}
+    </div>
+    <div className="ml-6 mt-1 space-y-1 text-white/80">
+      <div>{t("visit.location2.address")}</div>
+      <div className="flex items-center gap-2">
+        <FiClock /> {t("visit.hours")}
+      </div>
+      <div className="flex items-center gap-2">
+        <FiPhone /> {t("visit.location2.phone")}
+      </div>
+    </div>
+  </div>
+</div>
+
               </div>
 
               <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
@@ -486,7 +509,7 @@ export default function DolceVitaCafe() {
 
                   <div className="mt-4 flex flex-col gap-3">
                     <a
-                      href="tel:+49000000000"
+                      href="tel:+4915236400608"
                       className="rounded-2xl bg-white text-neutral-900 px-4 py-3 text-sm font-bold text-center hover:bg-neutral-100 transition"
                     >
                       {t("visit.call")}

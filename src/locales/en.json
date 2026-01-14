@@ -28,13 +28,21 @@
     "italian": "Italian style",
     "family": "Family friendly"
   },
-  "visit": {
-    "hours": "Daily 10:00 – 22:00",
-    "call": "Call now",
-    "map": "Get directions",
+ "visit": {
+  "hours": "Daily 10:00 – 22:00",
+  "call": "Call now",
+  "map": "Get directions",
+  "location1": {
+    "title": "Dolce Vita – Möckmühl",
     "address": "Ruchsener Str. 2, 74219 Möckmühl, Germany",
     "phone": "+49 1523 6400608"
   },
+  "location2": {
+    "title": "Dolce Vita – Pleidelsheim",
+    "address": "Hindenburg Platz 3 74385 Pleidelsheim, Germany",
+    "phone": "+49 1523 6400608"
+  }
+},
   "dolcevita": {
     "mobile": { "menu": "Menu" },
     "tags": {
