@@ -1,0 +1,108 @@
+{
+  "tagline": "Ice Cream • Coffee • Dolce Vita",
+  "nav": {
+    "gelato": "Ice Cream",
+    "specials": "Specials",
+    "gallery": "Gallery",
+    "visit": "Visit"
+  },
+  "hero": {
+    "title1": "Dolce Vita",
+    "title2": "Eis-Café",
+    "desc": "Handcrafted ice cream, beautifully served dessert cups and Italian coffee — a welcoming place for families, friends and sweet moments.",
+    "cta1": "Discover specials",
+    "cta2": "Location & hours"
+  },
+  "sections": {
+    "gelatoTitle": "Our favourites",
+    "gelatoSub": "A selection of guest favourites. More flavours available in-store.",
+    "specialsTitle": "Our specials",
+    "specialsSub": "Signature creations you should definitely try.",
+    "galleryTitle": "Gallery",
+    "gallerySub": "A glimpse into our colourful creations.",
+    "visitTitle": "Visit Dolce Vita",
+    "visitSub": "Tap to call or open directions."
+  },
+  "chips": {
+    "fresh": "Fresh daily",
+    "italian": "Italian style",
+    "family": "Family friendly"
+  },
+  "visit": {
+    "hours": "Daily 10:00 – 22:00",
+    "call": "Call now",
+    "map": "Get directions",
+    "address": "Ruchsener Str. 2, 74219 Möckmühl, Germany",
+    "phone": "+49 1523 6400608"
+  },
+  "dolcevita": {
+    "mobile": { "menu": "Menu" },
+    "tags": {
+      "top": "Top",
+      "classic": "Classic",
+      "summer": "Summer",
+      "italian": "Italiano",
+      "showcase": "Special",
+      "family": "Family",
+      "best": "Popular"
+    },
+    "heroCard": {
+      "title": "Italian style • Sweet specialties",
+      "desc": "Handcrafted desserts inspired by Italian tradition."
+    },
+    "favourites": {
+      "items": {
+        "fruitCup": {
+          "name": "Tropical Fruit Cup",
+          "desc": "Fresh fruit with gelato and cream — light, refreshing and perfect for summer."
+        },
+        "chocolateDeluxe": {
+          "name": "Chocolate Deluxe",
+          "desc": "Chocolate gelato with sauce and toppings — rich, creamy and indulgent."
+        },
+        "strawberryDream": {
+          "name": "Strawberry Dream",
+          "desc": "Strawberries with vanilla gelato and cream — fresh, sweet and always popular."
+        },
+        "affogato": {
+          "name": "Affogato",
+          "desc": "Vanilla gelato with espresso — a true Italian classic."
+        }
+      }
+    },
+    "specials": {
+      "items": {
+        "dolceVitaCup": {
+          "name": "Dolce Vita Cup",
+          "desc": "Our signature dessert cup — perfect to enjoy and share."
+        },
+        "kinderCup": {
+          "name": "Kinder Cup",
+          "desc": "Colourful toppings and sweet fun — a favourite for kids."
+        },
+        "waffleIce": {
+          "name": "Waffle & Ice Cream",
+          "desc": "Warm waffle with ice cream and cream — comforting and delicious."
+        }
+      }
+    },
+    "gallery": {
+      "items": {
+        "g1": "Fruit Cup",
+        "g2": "Chocolate Special",
+        "g3": "Berry & Orange Dessert",
+        "g4": "Caramel Chocolate",
+        "g5": "Orange & Berries"
+      }
+    },
+    "visit": {
+      "mapHint": "Find us here and enjoy ice cream, coffee and summer moments."
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "footer": {
+      "demo": "All rights reserved."
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "tagline": "Eis • Kaffee • Dolce Vita",
+  "nav": { "gelato": "Eis", "specials": "Highlights", "gallery": "Galerie", "visit": "Besuchen" },
+  "hero": {
+    "title1": "Dolce Vita",
+    "title2": "Eis-Café",
+    "desc": "Hausgemachtes Eis, liebevoll angerichtete Eisbecher und italienischer Kaffee — ein besonderer Ort für Familien, Freunde und echte Genussmomente.",
+    "cta1": "Highlights entdecken",
+    "cta2": "Adresse & Öffnungszeiten"
+  },
+  "sections": {
+    "gelatoTitle": "Unsere Favoriten",
+    "gelatoSub": "Beliebte Klassiker, die immer passen — frisch, cremig und mit Liebe gemacht.",
+    "specialsTitle": "Unsere Highlights",
+    "specialsSub": "Signature-Kreationen, die man probiert haben muss.",
+    "galleryTitle": "Galerie",
+    "gallerySub": "Ein kleiner Einblick in unsere schönsten Kreationen.",
+    "visitTitle": "Dolce Vita besuchen",
+    "visitSub": "Ein Klick zum Anrufen oder Route öffnen. Wir freuen uns auf deinen Besuch."
+  },
+  "chips": { "fresh": "Täglich frisch", "italian": "Italienischer Stil", "family": "Familienfreundlich" },
+  "visit": {
+    "hours": "Täglich 10:00 – 22:00",
+    "call": "Jetzt anrufen",
+    "map": "Route öffnen",
+    "address": "Ruchsener Str. 2, 74219 Möckmühl, Germany",
+    "phone": "+49 1523 6400608"
+  },
+  "dolcevita": {
+    "mobile": { "menu": "Menü" },
+    "tags": {
+      "top": "Top",
+      "classic": "Klassisch",
+      "summer": "Sommer",
+      "italian": "Italiano",
+      "showcase": "Highlight",
+      "family": "Familie",
+      "best": "Beliebt"
+    },
+    "heroCard": {
+      "title": "Italienischer Stil • Süße Spezialitäten",
+      "desc": "Handgemachte Desserts nach italienischer Tradition — perfekt für eine kleine Auszeit."
+    },
+    "favourites": {
+      "items": {
+        "fruitCup": { "name": "Früchtebecher Tropical", "desc": "Frische Früchte, Eis und Sahne — leicht, fruchtig und perfekt im Sommer." },
+        "chocolateDeluxe": { "name": "Schoko Deluxe", "desc": "Schokoladeneis mit Soße und Toppings — intensiv, cremig und edel." },
+        "strawberryDream": { "name": "Erdbeer Traum", "desc": "Erdbeeren, Vanilleeis und Sahne — frisch, süß und immer beliebt." },
+        "affogato": { "name": "Affogato", "desc": "Vanilleeis mit Espresso — ein italienischer Klassiker mit Charakter." }
+      }
+    },
+    "specials": {
+      "items": {
+        "dolceVitaCup": { "name": "Dolce Vita Becher", "desc": "Unser Signature-Becher — ideal zum Genießen und Teilen." },
+        "kinderCup": { "name": "Kinder Becher", "desc": "Bunte Toppings und süßer Spaß — perfekt für die Kleinen." },
+        "waffleIce": { "name": "Waffel & Eis", "desc": "Warme Waffel mit Eis und Sahne — gemütlich, lecker und sättigend." }
+      }
+    },
+    "gallery": {
+      "items": {
+        "g1": "Früchtebecher",
+        "g2": "Schoko-Spezial",
+        "g3": "Beeren & Orange Dessert",
+        "g4": "Karamell-Schoko",
+        "g5": "Orange & Beeren"
+      }
+    },
+    "visit": {
+      "mapHint": "Hier findest du uns — komm vorbei und genieße Eis, Kaffee und Sommermomente."
+    },
+    "contact": {
+      "title": "Kontakt"
+    },
+    "footer": {
+      "demo": "Alle Rechte vorbehalten."
+    }
+  }
+}
