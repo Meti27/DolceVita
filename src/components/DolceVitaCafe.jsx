@@ -1,16 +1,25 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FiMenu, FiX, FiMapPin, FiClock, FiPhone } from "react-icons/fi";
 
 // Images
 import logoImg from "../assets/logo.jpeg";
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/hero.jpeg";
 import g1 from "../assets/g1.jpeg";
-import g2 from "../assets/g2.jpeg";
 import g3 from "../assets/g3.jpeg";
 import g4 from "../assets/g4.jpeg";
 import g5 from "../assets/g5.jpeg";
+import g6 from "../assets/g6.jpeg";
+import g7 from "../assets/g7.jpeg";
+import g8 from "../assets/g8.jpeg";
+import g9 from "../assets/g9.jpeg";
+import g10 from "../assets/g10.jpeg";
+import g11 from "../assets/g11.jpeg";
+import g12 from "../assets/g12.jpeg";
+import g13 from "../assets/g13.jpeg";
+import g14 from "../assets/g14.jpeg";
+import g15 from "../assets/g15.jpeg";
 
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 const sectionPad = "py-14 sm:py-16";
@@ -106,13 +115,13 @@ function ItemCard({ item, index }) {
           </div>
           <div className="mt-1 text-sm text-neutral-600">{item.desc}</div>
         </div>
-
         {/* Prices removed on purpose */}
       </div>
     </motion.div>
   );
 }
 
+/** ✅ Gallery card WITHOUT text under image */
 function GalleryCard({ src, alt, index }) {
   return (
     <motion.div
@@ -132,9 +141,6 @@ function GalleryCard({ src, alt, index }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0" />
       </div>
-      <div className="p-4">
-        <div className="text-sm font-semibold text-neutral-900">{alt}</div>
-      </div>
     </motion.div>
   );
 }
@@ -143,6 +149,10 @@ export default function DolceVitaCafe() {
   const reduceMotion = useReducedMotion();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+
+  // ✅ Lightbox state
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const isLightboxOpen = lightboxIndex !== null;
 
   const links = [
     { label: t("nav.gelato"), href: "#gelato" },
@@ -200,22 +210,64 @@ export default function DolceVitaCafe() {
     [t]
   );
 
-  // Gallery captions (translated)
+  // ✅ Gallery now uses NO translation keys for names, we only keep alt minimal for accessibility
   const gallery = useMemo(
     () => [
-      { src: g1, alt: t("dolcevita.gallery.items.g1") },
-      { src: g2, alt: t("dolcevita.gallery.items.g2") },
-      { src: g3, alt: t("dolcevita.gallery.items.g3") },
-      { src: g4, alt: t("dolcevita.gallery.items.g4") },
-      { src: g5, alt: t("dolcevita.gallery.items.g5") },
+      { src: g1, alt: "Dolce Vita gallery image 1" },
+      { src: g3, alt: "Dolce Vita gallery image 3" },
+      { src: g4, alt: "Dolce Vita gallery image 4" },
+      { src: g5, alt: "Dolce Vita gallery image 5" },
+      { src: g6, alt: "Dolce Vita gallery image 6" },
+      { src: g7, alt: "Dolce Vita gallery image 7" },
+      { src: g8, alt: "Dolce Vita gallery image 8" },
+      { src: g9, alt: "Dolce Vita gallery image 9" },
+      { src: g10, alt: "Dolce Vita gallery image 10" },
+      { src: g11, alt: "Dolce Vita gallery image 11" },
+      { src: g12, alt: "Dolce Vita gallery image 12" },
+      { src: g13, alt: "Dolce Vita gallery image 13" },
+      { src: g14, alt: "Dolce Vita gallery image 14" },
+      { src: g15, alt: "Dolce Vita gallery image 15" },
     ],
-    [t]
+    []
   );
+
+  function openLightbox(i) {
+    setLightboxIndex(i);
+  }
+  function closeLightbox() {
+    setLightboxIndex(null);
+  }
+  function prevImg() {
+    setLightboxIndex((i) => (i === 0 ? gallery.length - 1 : i - 1));
+  }
+  function nextImg() {
+    setLightboxIndex((i) => (i === gallery.length - 1 ? 0 : i + 1));
+  }
+
+  // ✅ ESC + Arrow keys
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (!isLightboxOpen) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImg();
+      if (e.key === "ArrowRight") nextImg();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isLightboxOpen, gallery.length]);
+
+  // ✅ prevent background scroll when modal open
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isLightboxOpen]);
 
   return (
     <div className="min-h-screen bg-[#FAF7F0] text-neutral-900 overflow-x-hidden">
-
-
       {/* Subtle “gold” + italian accent background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div
@@ -419,13 +471,21 @@ export default function DolceVitaCafe() {
           </div>
         </section>
 
-        {/* Gallery with your real photos */}
+        {/* ✅ Gallery (clickable + no text labels) */}
         <section id="gallery" className="bg-white">
           <div className={`${container} ${sectionPad}`}>
             <SectionTitle title={t("sections.galleryTitle")} subtitle={t("sections.gallerySub")} />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {gallery.map((g, i) => (
-                <GalleryCard key={`${g.alt}-${i}`} src={g.src} alt={g.alt} index={i} />
+                <button
+                  key={`${g.alt}-${i}`}
+                  type="button"
+                  onClick={() => openLightbox(i)}
+                  className="text-left focus:outline-none"
+                  aria-label={`Open gallery image ${i + 1}`}
+                >
+                  <GalleryCard src={g.src} alt={g.alt} index={i} />
+                </button>
               ))}
             </div>
           </div>
@@ -451,39 +511,38 @@ export default function DolceVitaCafe() {
                 <p className="mt-4 text-sm text-white/80">{t("sections.visitSub")}</p>
 
                 <div className="mt-5 space-y-4 text-sm text-white/85">
-  {/* Location 1 */}
-  <div>
-    <div className="flex items-center gap-2 font-semibold">
-      <FiMapPin /> {t("visit.location1.title")}
-    </div>
-    <div className="ml-6 mt-1 space-y-1 text-white/80">
-      <div>{t("visit.location1.address")}</div>
-      <div className="flex items-center gap-2">
-        <FiClock /> {t("visit.hours")}
-      </div>
-      <div className="flex items-center gap-2">
-        <FiPhone /> {t("visit.location1.phone")}
-      </div>
-    </div>
-  </div>
+                  {/* Location 1 */}
+                  <div>
+                    <div className="flex items-center gap-2 font-semibold">
+                      <FiMapPin /> {t("visit.location1.title")}
+                    </div>
+                    <div className="ml-6 mt-1 space-y-1 text-white/80">
+                      <div>{t("visit.location1.address")}</div>
+                      <div className="flex items-center gap-2">
+                        <FiClock /> {t("visit.hours")}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <FiPhone /> {t("visit.location1.phone")}
+                      </div>
+                    </div>
+                  </div>
 
-  {/* Location 2 */}
-  <div>
-    <div className="flex items-center gap-2 font-semibold">
-      <FiMapPin /> {t("visit.location2.title")}
-    </div>
-    <div className="ml-6 mt-1 space-y-1 text-white/80">
-      <div>{t("visit.location2.address")}</div>
-      <div className="flex items-center gap-2">
-        <FiClock /> {t("visit.hours")}
-      </div>
-      <div className="flex items-center gap-2">
-        <FiPhone /> {t("visit.location2.phone")}
-      </div>
-    </div>
-  </div>
-</div>
-
+                  {/* Location 2 */}
+                  <div>
+                    <div className="flex items-center gap-2 font-semibold">
+                      <FiMapPin /> {t("visit.location2.title")}
+                    </div>
+                    <div className="ml-6 mt-1 space-y-1 text-white/80">
+                      <div>{t("visit.location2.address")}</div>
+                      <div className="flex items-center gap-2">
+                        <FiClock /> {t("visit.hours")}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <FiPhone /> {t("visit.location2.phone")}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
@@ -491,16 +550,15 @@ export default function DolceVitaCafe() {
                   <div className="font-semibold">{t("sections.visitTitle")}</div>
                   <div className="mt-2 text-sm text-white/75">{t("dolcevita.visit.mapHint")}</div>
                   <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20804.182413446666!2d9.340607630317429!3d49.32332014156209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4798181d155379e1%3A0x29fc58ac67ee6c8e!2sDolce%20Vita!5e0!3m2!1sen!2smk!4v1768408037754!5m2!1sen!2smk"
-    className="h-56 w-full border-0"
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    allowFullScreen
-    title="Dolce Vita Location"
-  />
-</div>
-
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20804.182413446666!2d9.340607630317429!3d49.32332014156209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4798181d155379e1%3A0x29fc58ac67ee6c8e!2sDolce%20Vita!5e0!3m2!1sen!2smk!4v1768408037754!5m2!1sen!2smk"
+                      className="h-56 w-full border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                      title="Dolce Vita Location"
+                    />
+                  </div>
                 </div>
 
                 <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
@@ -543,6 +601,72 @@ export default function DolceVitaCafe() {
             </div>
           </div>
         </section>
+
+        {/* ✅ Lightbox Modal */}
+        <AnimatePresence>
+          {isLightboxOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[999] bg-black/70 backdrop-blur-sm"
+              onClick={closeLightbox}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98, y: 12 }}
+                transition={{ duration: 0.2 }}
+                className="absolute left-3 right-3 top-1/2 -translate-y-1/2 mx-auto max-w-5xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl">
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute right-3 top-3 z-10 rounded-2xl bg-white/90 px-3 py-2 text-sm font-bold text-neutral-900 ring-1 ring-black/10 hover:bg-white"
+                    aria-label="Close"
+                    type="button"
+                  >
+                    ✕
+                  </button>
+
+                  <button
+                    onClick={prevImg}
+                    className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-2xl bg-white/90 px-3 py-2 text-sm font-bold text-neutral-900 ring-1 ring-black/10 hover:bg-white"
+                    aria-label="Previous"
+                    type="button"
+                  >
+                    ‹
+                  </button>
+
+                  <button
+                    onClick={nextImg}
+                    className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-2xl bg-white/90 px-3 py-2 text-sm font-bold text-neutral-900 ring-1 ring-black/10 hover:bg-white"
+                    aria-label="Next"
+                    type="button"
+                  >
+                    ›
+                  </button>
+
+                  <div className="bg-black">
+                    <img
+                      src={gallery[lightboxIndex].src}
+                      alt={gallery[lightboxIndex].alt}
+                      className="h-[70vh] w-full object-contain"
+                      loading="eager"
+                    />
+                  </div>
+
+                  <div className="px-5 py-4">
+                    <div className="text-xs text-neutral-600">
+                      {lightboxIndex + 1} / {gallery.length}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
